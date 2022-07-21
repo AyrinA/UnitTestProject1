@@ -10,21 +10,37 @@ using OpenQA.Selenium.Support.UI;
 
 namespace addressbook_web_tests
 {
-    public class ContactsHelper: HelperBase
+    public class ContactsHelper : HelperBase
     {
         public ContactsHelper(ApplicationManager manager)
            : base(manager)
         {
         }
 
-        public ContactsHelper CreateContact (ContactsData contacts)
+        public ContactsHelper Remove(int v)
+        {
+            manager.Navigator.GoToHomePage();
+            SelectContact();
+            DeleteContact();
+            return this;
+        }
+
+        public ContactsHelper CreateContact(ContactsData contacts)
         {
             manager.Navigator.OpenHomePage();
-
             AddNewContact();
             InitContactCreation();
             FillContactForm(contacts);
             SubmitContactCreation();
+            return this;
+        }
+
+        public ContactsHelper Modify(int v, ContactsData newData)
+        {
+            manager.Navigator.GoToHomePage();
+            SelectAndEditContact();
+            FillContactForm(newData);
+            SubmitContactModification();
             return this;
         }
 
@@ -47,7 +63,6 @@ namespace addressbook_web_tests
             driver.FindElement(By.Name("company")).Click();
             driver.FindElement(By.Name("company")).Clear();
             driver.FindElement(By.Name("company")).SendKeys(contacts.Company);
-            driver.FindElement(By.Name("theform")).Click();
             driver.FindElement(By.Name("home")).Click();
             driver.FindElement(By.Name("mobile")).Click();
             driver.FindElement(By.Name("mobile")).Clear();
@@ -73,19 +88,30 @@ namespace addressbook_web_tests
             return this;
         }
 
-        public bool IsElementPresent(By by)
+        public ContactsHelper SelectAndEditContact()
         {
-            try
-            {
-                driver.FindElement(by);
-                return true;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
+            driver.FindElement(By.Id("7")).Click();
+            driver.FindElement(By.XPath("//table[@id='maintable']/tbody/tr[10]/td[8]/a/img")).Click();
+            return this;
         }
 
+        public ContactsHelper SubmitContactModification()
+        {
+            driver.FindElement(By.XPath("//div[@id='content']/form/input[22]")).Click();
+            return this;
+        }
 
+        public ContactsHelper SelectContact()
+        {
+            driver.FindElement(By.Id("2")).Click();
+            return this;
+        }
+
+        public ContactsHelper DeleteContact()
+        {
+            driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            driver.SwitchTo().Alert();
+            return this;
+        }
     }
 }

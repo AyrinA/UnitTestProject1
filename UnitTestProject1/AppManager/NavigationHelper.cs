@@ -25,5 +25,11 @@ namespace addressbook_web_tests
         {
             driver.Navigate().GoToUrl(baseURL + "/addressbook/group.php");
         }
+        public void GoToHomePage()
+        {
+            driver.Navigate().GoToUrl("http://localhost/addressbook/");
+            driver.FindElement(By.LinkText("home")).Click();
+        }
+
     }
 }

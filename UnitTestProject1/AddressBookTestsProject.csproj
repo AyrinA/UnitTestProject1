@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppManager\ContactRemovalTests.cs" />
     <Compile Include="model\AccountData.cs" />
     <Compile Include="AppManager\ApplicationManager.cs" />
     <Compile Include="model\ContactsData.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="tests\GroupsTest.cs" />
     <Compile Include="tests\ContactsTest.cs" />
     <Compile Include="tests\TestBase.cs" />
+    <Compile Include="tests\ContactModificationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
