@@ -90,8 +90,8 @@ namespace addressbook_web_tests
 
         public ContactsHelper SelectAndEditContact()
         {
-            driver.FindElement(By.Id("7")).Click();
-            driver.FindElement(By.XPath("//table[@id='maintable']/tbody/tr[10]/td[8]/a/img")).Click();
+            driver.FindElement(By.Id("4")).Click();
+            driver.FindElement(By.XPath("//table[@id='maintable']/tbody/tr[6]/td[8]/a/img")).Click();
             return this;
         }
 

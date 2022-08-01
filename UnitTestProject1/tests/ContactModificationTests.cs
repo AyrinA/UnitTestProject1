@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace addressbook_web_tests
 {
     [TestFixture]
-    public class ContactModificationTests : TestBase
+    public class ContactModificationTests : AuthTestBase
     {
         [Test]
         public void ContactModificationTest()
@@ -16,10 +16,10 @@ namespace addressbook_web_tests
             ContactsData newData = new ContactsData("Adam","Smith");
             newData.Company = "epam";
             newData.Mobile = "+0987654321";
-            newData.Email = "AdamSmith@gmail.com";
+            newData.Email = "email";
             newData.Address2 = "USA";
 
-            app.Contacts.Modify(7, newData);
+            app.Contacts.Modify(4, newData);
         }
     }
 }
