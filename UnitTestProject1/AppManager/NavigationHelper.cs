@@ -28,6 +28,11 @@ namespace addressbook_web_tests
         }
         public void OpenHomePage()
         {
+            if (driver.Url == baseURL + "/addressbook/edit.php"
+           && IsElementPresent(By.Name("add new")))
+            {
+                return;
+            }
             driver.Navigate().GoToUrl(baseURL + "/addressbook/edit.php");
         }
         public void GoToHomePage()
