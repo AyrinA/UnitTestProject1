@@ -55,7 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppManager\ContactRemovalTests.cs" />
+    <Compile Include="tests\ContactRemovalTests.cs" />
     <Compile Include="AppManager\TestSuiteFixture.cs" />
     <Compile Include="model\AccountData.cs" />
     <Compile Include="AppManager\ApplicationManager.cs" />
